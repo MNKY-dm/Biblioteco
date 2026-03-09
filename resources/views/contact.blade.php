@@ -2,7 +2,7 @@
 @section('title', 'Biblioteco - Contact')
 
 @section('content')
-    <div class="tm-hero d-flex justify-content-center align-items-center" data-parallax="scroll" data-image-src="{{ asset("img/hero.jpg") }}"></div>
+    <div class="tm-hero d-flex justify-content-center align-items-center" data-parallax="scroll" data-image-src="{{ asset("css/templatemo/img/hero.jpg") }}"></div>
 
     <div class="container-fluid tm-mt-60">
         <div class="row tm-mb-50">
@@ -77,7 +77,7 @@
         </div>
         <div class="row tm-mb-74 tm-people-row">
             <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-5">
-                <img src="{{ asset("img/people-1.jpg") }}" alt="Image" class="mb-4 img-fluid">
+                <img src="{{ asset("css/templatemo/img/people-1.jpg") }}" alt="Image" class="mb-4 img-fluid">
                 <h2 class="tm-text-primary mb-4">Ryan White</h2>
                 <h3 class="tm-text-secondary h5 mb-4">Chief Executive Officer</h3>
                 <p class="mb-4">
@@ -90,7 +90,7 @@
                 </ul>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-5">
-                <img src="{{ asset("img/people-2.jpg") }}" alt="Image" class="mb-4 img-fluid">
+                <img src="{{ asset("css/templatemo/img/people-2.jpg") }}" alt="Image" class="mb-4 img-fluid">
                 <h2 class="tm-text-primary mb-4">Catherine Pinky</h2>
                 <h3 class="tm-text-secondary h5 mb-4">Chief Marketing Officer</h3>
                 <p class="mb-4">
@@ -103,7 +103,7 @@
                 </ul>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-5">
-                <img src="{{ asset("img/people-3.jpg") }}" alt="Image" class="mb-4 img-fluid">
+                <img src="{{ asset("css/templatemo/img/people-3.jpg") }}" alt="Image" class="mb-4 img-fluid">
                 <h2 class="tm-text-primary mb-4">Johnny Brief</h2>
                 <h3 class="tm-text-secondary h5 mb-4">Accounting Executive</h3>
                 <p class="mb-4">
@@ -116,7 +116,7 @@
                 </ul>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-5">
-                <img src="{{ asset("img/people-4.jpg") }}" alt="Image" class="mb-4 img-fluid">
+                <img src="{{ asset("css/templatemo/img/people-4.jpg") }}" alt="Image" class="mb-4 img-fluid">
                 <h2 class="tm-text-primary mb-4">George Nelson</h2>
                 <h3 class="tm-text-secondary h5 mb-4">Creative Art Director #C69</h3>
                 <p class="mb-4">
