@@ -17,7 +17,7 @@ return new class extends Migration
             $table->timestamp('start_date');
             $table->timestamp('deadline');
             $table->string('status', 50);
-            $table->timestamp('returned_at');
+            $table->timestamp('returned_at')->nullable();
             $table->timestamps();
         });
     }
