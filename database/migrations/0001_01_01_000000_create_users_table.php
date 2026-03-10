@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('email');
             $table->string('password');
             $table->foreignID('id_role')->references('id')->on('roles');
-            $table->foreignID('id_subscription')->nullable()->references('id')->on('subscriptions');
             $table->string('tel', 20)->nullable();
             $table->rememberToken();
             $table->timestamps();

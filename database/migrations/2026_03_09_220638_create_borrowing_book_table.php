@@ -15,7 +15,7 @@ return new class extends Migration
             $table->foreignId('id_book')->references('id')->on('books');
             $table->foreignId('borrowing_id')->references('id')->on('books');
             $table->primary(['id_book', 'borrowing_id']);
-            $table->string('status', 50);
+            // $table->string('status', 50); colonne ajoutée ensuite pour la V2, pour un rendu des livres au compte-goutte
         });
     }
 
