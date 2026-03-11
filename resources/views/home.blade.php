@@ -25,19 +25,21 @@
             </div>
         </div>
         <div class="row tm-mb-90 tm-gallery">
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-                <figure class="effect-ming tm-video-item">
-                    <img src="{{ asset("css/templatemo/img/img-03.jpg") }}" alt="Image" class="img-fluid">
-                    <figcaption class="d-flex align-items-center justify-content-center">
-                        <h2>Clocks</h2>
-                        <a href="/home/detail">View more</a>
-                    </figcaption>
-                </figure>
-                <div class="d-flex justify-content-between tm-text-gray">
-                    <span class="tm-text-gray-light">18 Oct 2020</span>
-                    <span>9,906 views</span>
+            @foreach($books->all() as $book)
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
+                    <figure class="effect-ming tm-video-item">
+                        <img src="{{ asset("css/templatemo/img/img-03.jpg") }}" alt="Image" class="img-fluid">
+                        <figcaption class="d-flex align-items-center justify-content-center">
+                            <h2>{{ $book['name'] }}</h2>
+                            <a href="/home/detail">View more</a>
+                        </figcaption>
+                    </figure>
+                    <div class="d-flex justify-content-between tm-text-gray">
+                        <span class="tm-text-gray-light">{{ $book['name'] }}</span>
+                        <span>{{ $book['published_at'] }}</span>
+                    </div>
                 </div>
-            </div>
+            @endforeach
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
                     <img src="{{ asset("css/templatemo/img/img-04.jpg") }}" alt="Image" class="img-fluid">

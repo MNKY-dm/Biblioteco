@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name', 100);
             $table->text('summary');
             $table->string('author', 50);
-            $table->string('image_path', 30);
+            $table->string('image_path', 255);
             $table->string('language', 40);
             $table->string('status', 20);
             $table->timestamp('published_at');
