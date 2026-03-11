@@ -7,10 +7,7 @@ Route::get('/', function () {
 });
 
 Route::prefix("/home")->name('home.')->group(function () {
-    Route::get('/', [\App\Http\Controllers\HomeController::class, 'showBook']);
-//    Route::get('/', function () {
-//        return view('home');
-//    })->name('index');
+    Route::get('/', [\App\Http\Controllers\HomeController::class, 'showBook'])->name('index');
 
     Route::get('/detail', function () {
         return view('photo-detail');
