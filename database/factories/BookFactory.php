@@ -17,14 +17,33 @@ class BookFactory extends Factory
     public function definition(): array
     {
         $dir = storage_path("app/public/books");
+        $extensionsAutorisees = ['jpg', 'jpeg', 'png', 'webp'];
+
         $files = scandir($dir);
+        $validFiles = [];
+
+        foreach ($files as $file) {
+            if ($file === "." || $file === "..") {
+                continue;
+            } elseif (str_starts_with(".", $file)) {
+                continue;
+            }
+            else {
+                foreach ($extensionsAutorisees as $extension) {
+                    if (str_ends_with($file, $extension)) {
+                        $validFiles[] = $file;
+                    }
+                }
+            }
+        }
+
 
         return [
             'code' => 'BOOK' .  str_pad(fake()->unique()->randomNumber(5),  6, "0", STR_PAD_LEFT),
             'name' => fake()->words(rand(1, 3), true),
             'summary' => fake('fr_FR')->text(500),
             'author' => fake('fr_FR')->name(),
-            'image_path' => 'books/' . $files[rand(0, count($files) - 1)],
+            'image_path' => 'books/' . $validFiles[rand(0, count($validFiles) - 1)],
             'language' => 'FR',
             'status' => "DISPONIBLE",
             'published_at' => now(),

@@ -28,7 +28,7 @@
             @foreach($books->all() as $book)
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                     <figure class="effect-ming tm-video-item">
-                        <img src="{{ asset("css/templatemo/img/img-03.jpg") }}" alt="Image" class="img-fluid">
+                        <img src="{{ Storage::url($book->image_path) }}" alt="Image" class="img-fluid">
                         <figcaption class="d-flex align-items-center justify-content-center">
                             <h2>{{ $book['name'] }}</h2>
                             <a href="/home/detail">View more</a>
