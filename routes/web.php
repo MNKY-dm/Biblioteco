@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookDetailController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -7,16 +8,9 @@ Route::get('/', function () {
 });
 
 Route::prefix("/home")->name('home.')->group(function () {
-    Route::get('/', [\App\Http\Controllers\HomeController::class, 'showBook'])->name('index');
+    Route::get('/', [\App\Http\Controllers\HomeController::class, 'show'])->name('index');
 
-    Route::get('/detail', function () {
-        return view('photo-detail');
-    })->name('detail');
-});
-
-
-Route::get('/book-{id}', function (string $id) {
-    return view('book', ['book' => $id]);
+    Route::get('/detail-{id}', [BookDetailController::class, 'show'])->name('detail');
 });
 
 Route::prefix("/videos")->name('videos.')->group(function () {

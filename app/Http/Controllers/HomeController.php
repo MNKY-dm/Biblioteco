@@ -7,7 +7,7 @@ use App\Models\Book;
 
 class HomeController extends Controller
 {
-    public function showBook() {
+    public function show() {
 
         $books = Book::all();
 //        dd($books->get(1)['name']);
