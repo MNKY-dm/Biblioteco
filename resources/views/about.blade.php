@@ -89,10 +89,4 @@
         </div>
     </div>
 
-    <script>
-        $(window).on("load", function() {
-            $('body').addClass('loaded');
-        });
-    </script>
-
 @endsection

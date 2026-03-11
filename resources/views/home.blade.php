@@ -54,11 +54,4 @@
             </div>
         </div>
     </div> <!-- container-fluid, tm-container-content -->
-
-
-    <script>
-        $(window).on("load", function() {
-            $('body').addClass('loaded');
-        });
-    </script>
 @endsection
