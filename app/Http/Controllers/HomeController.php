@@ -9,8 +9,7 @@ class HomeController extends Controller
 {
     public function show() {
 
-        $books = Book::all();
-//        dd($books->get(1)['name']);
+        $books = Book::paginate(16);
 
         return view('home', ['books' => $books]);
     }
