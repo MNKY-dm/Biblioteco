@@ -658,3 +658,8 @@ figure.effect-ming img {
     margin: 0 auto;
     object-fit: contain;
 }
+
+.navicon {
+    font-weight: 32;
+    height: 32px;
+}
