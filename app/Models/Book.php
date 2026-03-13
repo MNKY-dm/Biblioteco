@@ -17,6 +17,10 @@ class Book extends Model
         return $this->belongsToMany(Tag::class);
     }
 
+    public function borrowings() : BelongsToMany {
+        return $this->belongsToMany(Borrowing::class, 'borrowing_book', 'id_book');
+    }
+
     protected $fillable = [
         'status',
         'image_path',

@@ -13,7 +13,7 @@
 
     <div class="container-fluid tm-container-content tm-mt-60">
         <div class="row mb-4">
-            <h2 class="col-12 tm-text-primary">Photo title goes here</h2>
+            <h2 class="col-12 tm-text-primary">{{ $book->name }}</h2>
         </div>
         <div class="row tm-mb-90">
             <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">
@@ -21,17 +21,24 @@
             </div>
             <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
                 <div class="tm-bg-gray tm-video-details">
-                    <h3 class="tm-login-title h-3.5 text-primary">{{ $book->name }}</h3>
                     <p class="mb-4">
                         {{ $book->summary }}
                     </p>
+                    @foreach($book->categories as $category)
+                        <p class="h-2 text-primary">{{ $category->name }}</p>
+                    @endforeach
                     <div class="text-center mb-5">
-                        <a href="#" class="btn btn-primary tm-btn-big @if($book->status !== "DISPONIBLE") disabled @endif">Emprunter</a>
+                        <a href="/borrow-{{ $book->id }}" class="btn btn-primary tm-btn-big @if($book->status !== "DISPONIBLE") disabled @endif">Emprunter</a>
                     </div>
                     <div class="mb-4 d-flex flex-wrap">
                         <div class="mr-4 mb-2">
                             <span class="tm-text-gray-dark">Disponibilité : </span><span class="tm-text-primary"> @if($book->status === "DISPONIBLE") Disponible à l'emprunt @else Déjà emprunté @endif</span>
                         </div>
+                        @if($book->status === "EMPRUNTE")
+                            <div class="mr-4 mb-2">
+                                <span class="tm-text-gray-dark">Retour : </span><span class="tm-text-primary">Retour prévu avant le {{ $book->borrowings()->first()?->deadline->addDays(1)->format('d/m/Y') }}</span>
+                            </div>
+                        @endif
                         <div class="mr-4 mb-2">
                             <span class="tm-text-gray-dark">Langue: </span><span class="tm-text-primary">{{ $book->language }}</span>
                         </div>
@@ -40,7 +47,7 @@
                         </div>
                     </div>
                     <div class="mb-4">
-                        <h3 class="tm-text-gray-dark mb-3">l'Auteur.ice</h3>
+                        <h3 class="tm-text-gray-dark mb-3">L'auteur.ice</h3>
                         <p>{{ $book->author }}</p>
                     </div>
                     <div>
@@ -64,7 +71,7 @@
                     <img src="{{ Storage::url($relatedBook->image_path) }}" alt="Image" class="img-fluid">
                     <figcaption class="d-flex align-items-center justify-content-center">
                         <h2>{{ $relatedBook->name }}</h2>
-                        <a href="#">View more</a>
+                        <a href="/home/detail-{{ $relatedBook->id }}">View more</a>
                     </figcaption>
                 </figure>
                 <div class="d-flex justify-content-between tm-text-gray">

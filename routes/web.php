@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BookDetailController;
+use App\Http\Controllers\BorrowController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,8 @@ Route::prefix("/home")->name('home.')->group(function () {
 
     Route::get('/detail-{id}', [BookDetailController::class, 'show'])->name('detail');
 });
+
+Route::get('/borrow-{id}', [BorrowController::class, 'borrow'])->name('borrow')->middleware('auth');
 
 Route::prefix("/videos")->name('videos.')->group(function () {
     Route::get('/', function () {
