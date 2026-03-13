@@ -21,4 +21,11 @@ class Book extends Model
         'status',
         'image_path',
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'published_at' => 'datetime',
+        ];
+    }
 }

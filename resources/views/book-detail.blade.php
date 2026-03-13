@@ -26,143 +26,57 @@
                         {{ $book->summary }}
                     </p>
                     <div class="text-center mb-5">
-                        <a href="#" class="btn btn-primary tm-btn-big">Download</a>
+                        <a href="#" class="btn btn-primary tm-btn-big @if($book->status !== "DISPONIBLE") disabled @endif">Emprunter</a>
                     </div>
                     <div class="mb-4 d-flex flex-wrap">
                         <div class="mr-4 mb-2">
-                            <span class="tm-text-gray-dark">Dimension: </span><span class="tm-text-primary">1920x1080</span>
+                            <span class="tm-text-gray-dark">Disponibilité : </span><span class="tm-text-primary"> @if($book->status === "DISPONIBLE") Disponible à l'emprunt @else Déjà emprunté @endif</span>
                         </div>
                         <div class="mr-4 mb-2">
-                            <span class="tm-text-gray-dark">Format: </span><span class="tm-text-primary">JPG</span>
+                            <span class="tm-text-gray-dark">Langue: </span><span class="tm-text-primary">{{ $book->language }}</span>
+                        </div>
+                        <div class="mr-4 mb-2">
+                            <span class="tm-text-gray-dark">Publié le : </span><span class="tm-text-primary">{{ $book->published_at->format('d/m/Y') }}</span>
                         </div>
                     </div>
                     <div class="mb-4">
-                        <h3 class="tm-text-gray-dark mb-3">License</h3>
-                        <p>Free for both personal and commercial use. No need to pay anything. No need to make any attribution.</p>
+                        <h3 class="tm-text-gray-dark mb-3">l'Auteur.ice</h3>
+                        <p>{{ $book->author }}</p>
                     </div>
                     <div>
                         <h3 class="tm-text-gray-dark mb-3">Tags</h3>
-                        <a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">Cloud</a>
-                        <a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">Bluesky</a>
-                        <a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">Nature</a>
-                        <a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">Background</a>
-                        <a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">Timelapse</a>
-                        <a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">Night</a>
-                        <a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">Real Estate</a>
+                        @foreach($book->tags as $tag)
+                            <a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">{{ $tag->name }}</a>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
         <div class="row mb-4">
             <h2 class="col-12 tm-text-primary">
-                Related Photos
+                Livres sur des thèmes similaires
             </h2>
         </div>
         <div class="row mb-3 tm-gallery">
+            @foreach($booksWithSameTags as $relatedBook)
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
-                    <img src="{{ asset("css/templatemo/img/img-01.jpg") }}" alt="Image" class="img-fluid">
+                    <img src="{{ Storage::url($relatedBook->image_path) }}" alt="Image" class="img-fluid">
                     <figcaption class="d-flex align-items-center justify-content-center">
-                        <h2>Hangers</h2>
+                        <h2>{{ $relatedBook->name }}</h2>
                         <a href="#">View more</a>
                     </figcaption>
                 </figure>
                 <div class="d-flex justify-content-between tm-text-gray">
-                    <span class="tm-text-gray-light">16 Oct 2020</span>
-                    <span>12,460 views</span>
+                    <div class="tm-text-gray-light tm-card-tags">
+                        @foreach($relatedBook->tags as $tag)
+                            <span class="tm-text-gray-light fs-6">{{ $tag->name }}</span><br>
+                        @endforeach
+                    </div>
+                    <span class="">{{ $relatedBook->author }}</span>
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-                <figure class="effect-ming tm-video-item">
-                    <img src="{{ asset("css/templatemo/img/img-02.jpg") }}" alt="Image" class="img-fluid">
-                    <figcaption class="d-flex align-items-center justify-content-center">
-                        <h2>Perfumes</h2>
-                        <a href="#">View more</a>
-                    </figcaption>
-                </figure>
-                <div class="d-flex justify-content-between tm-text-gray">
-                    <span class="tm-text-gray-light">12 Oct 2020</span>
-                    <span>11,402 views</span>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-                <figure class="effect-ming tm-video-item">
-                    <img src="{{ asset("css/templatemo/img/img-03.jpg") }}" alt="Image" class="img-fluid">
-                    <figcaption class="d-flex align-items-center justify-content-center">
-                        <h2>Clocks</h2>
-                        <a href="#">View more</a>
-                    </figcaption>
-                </figure>
-                <div class="d-flex justify-content-between tm-text-gray">
-                    <span class="tm-text-gray-light">8 Oct 2020</span>
-                    <span>9,906 views</span>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-                <figure class="effect-ming tm-video-item">
-                    <img src="{{ asset("css/templatemo/img/img-04.jpg") }}" alt="Image" class="img-fluid">
-                    <figcaption class="d-flex align-items-center justify-content-center">
-                        <h2>Plants</h2>
-                        <a href="#">View more</a>
-                    </figcaption>
-                </figure>
-                <div class="d-flex justify-content-between tm-text-gray">
-                    <span class="tm-text-gray-light">6 Oct 2020</span>
-                    <span>16,100 views</span>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-                <figure class="effect-ming tm-video-item">
-                    <img src="{{ asset("css/templatemo/img/img-05.jpg") }}" alt="Image" class="img-fluid">
-                    <figcaption class="d-flex align-items-center justify-content-center">
-                        <h2>Morning</h2>
-                        <a href="#">View more</a>
-                    </figcaption>
-                </figure>
-                <div class="d-flex justify-content-between tm-text-gray">
-                    <span class="tm-text-gray-light">26 Sep 2020</span>
-                    <span>16,008 views</span>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-                <figure class="effect-ming tm-video-item">
-                    <img src="{{ asset("css/templatemo/img/img-06.jpg") }}" alt="Image" class="img-fluid">
-                    <figcaption class="d-flex align-items-center justify-content-center">
-                        <h2>Pinky</h2>
-                        <a href="#">View more</a>
-                    </figcaption>
-                </figure>
-                <div class="d-flex justify-content-between tm-text-gray">
-                    <span class="tm-text-gray-light">22 Sep 2020</span>
-                    <span>12,860 views</span>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-                <figure class="effect-ming tm-video-item">
-                    <img src="{{ asset("css/templatemo/img/img-07.jpg") }}" alt="Image" class="img-fluid">
-                    <figcaption class="d-flex align-items-center justify-content-center">
-                        <h2>Bus</h2>
-                        <a href="#">View more</a>
-                    </figcaption>
-                </figure>
-                <div class="d-flex justify-content-between tm-text-gray">
-                    <span class="tm-text-gray-light">12 Sep 2020</span>
-                    <span>10,900 views</span>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-                <figure class="effect-ming tm-video-item">
-                    <img src="{{ asset("css/templatemo/img/img-08.jpg") }}" alt="Image" class="img-fluid">
-                    <figcaption class="d-flex align-items-center justify-content-center">
-                        <h2>New York</h2>
-                        <a href="#">View more</a>
-                    </figcaption>
-                </figure>
-                <div class="d-flex justify-content-between tm-text-gray">
-                    <span class="tm-text-gray-light">4 Sep 2020</span>
-                    <span>11,300 views</span>
-                </div>
-            </div>
+            @endforeach
         </div> <!-- row -->
     </div>
 @endsection
