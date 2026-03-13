@@ -21,8 +21,9 @@
             </div>
             <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
                 <div class="tm-bg-gray tm-video-details">
+                    <h3 class="tm-login-title h-3.5 text-primary">{{ $book->name }}</h3>
                     <p class="mb-4">
-                        Please support us by making <a href="https://paypal.me/templatemo" target="_parent" rel="sponsored">a PayPal donation</a>. Nam ex nibh, efficitur eget libero ut, placerat aliquet justo. Cras nec varius leo.
+                        {{ $book->summary }}
                     </p>
                     <div class="text-center mb-5">
                         <a href="#" class="btn btn-primary tm-btn-big">Download</a>
