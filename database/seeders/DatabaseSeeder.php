@@ -4,7 +4,9 @@ namespace Database\Seeders;
 
 use App\Models\Book;
 use App\Models\Category;
+use App\Models\Role;
 use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Random\RandomException;
@@ -23,8 +25,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             CategorySeeder::class,
             TagSeeder::class,
-        ],);
-        // User::factory(10)->create();
+            RoleSeeder::class,
+        ]);
 
         $books = Book::factory(60)->create();
         foreach ($books as $book) {
@@ -36,5 +38,7 @@ class DatabaseSeeder extends Seeder
             $tagsId = Tag::all()->random($nbTags)->pluck('id');
             $book->tags()->attach($tagsId);
         }
+
+        User::factory(15)->create();
     }
 }
