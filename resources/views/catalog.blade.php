@@ -34,7 +34,7 @@
                 </figure>
                 <div class="d-flex justify-content-between tm-text-gray">
                     <span class="tm-text-gray-light">{{ $book->published_at->format("d/m/Y") }}</span>
-                    <span>{{ $book->name }}</span>
+                    <span class="text-primary">{{ $book->name }}</span>
                 </div>
             </div>
         @endforeach <!-- row -->

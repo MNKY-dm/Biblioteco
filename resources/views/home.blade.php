@@ -23,7 +23,7 @@
                     <figure class="effect-ming tm-video-item">
                         <img src="{{ Storage::url($book->image_path) }}" alt="Image" class="img-fluid">
                         <figcaption class="d-flex align-items-center justify-content-center">
-                            <h2>{{ $book->name }}</h2>
+                            <h2 class="text-primary">{{ $book->name }}</h2>
                             <a href="/home/detail-{{ $book->id }}">View more</a>
                         </figcaption>
                     </figure>
