@@ -71,7 +71,7 @@
                     <img src="{{ Storage::url($relatedBook->image_path) }}" alt="Image" class="img-fluid">
                     <figcaption class="d-flex align-items-center justify-content-center">
                         <h2>{{ $relatedBook->name }}</h2>
-                        <a href="/home/detail-{{ $relatedBook->id }}">View more</a>
+                        <a href="/detail-{{ $relatedBook->id }}">View more</a>
                     </figcaption>
                 </figure>
                 <div class="d-flex justify-content-between tm-text-gray">

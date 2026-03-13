@@ -14,14 +14,9 @@
     </div>
 
     <div class="container-fluid tm-container-content tm-mt-60">
-        <div class="row mb-4">
-            <h2 class="col-6 tm-text-primary">
-                Catalogue de nos livres
-            </h2>
-            <div class="col-6 d-flex justify-content-end align-items-center">
-                {{ $books->links() }}
-            </div>
-        </div>
+        <h2 class="col-6 tm-text-primary">
+            Certains de nos livres :
+        </h2>
         <div class="row tm-mb-90 tm-gallery">
             @foreach($books as $book)
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
@@ -39,8 +34,5 @@
                 </div>
             @endforeach
             <!-- row -->
-        <div class="row tm-mb-90">
-            {{ $books->links() }}
-        </div>
     </div> <!-- container-fluid, tm-container-content -->
 @endsection
