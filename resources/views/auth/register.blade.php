@@ -68,6 +68,21 @@
             @enderror
 
             <div class="tm-login-field">
+                <label for="tel" class="tm-login-label">Numéro de téléphone <span class="italic">(facultatif)</span></label>
+                <input
+                    name="tel"
+                    id="tel"
+                    type="tel"
+                    class="form-control tm-login-input @error('tel') tm-input-error @enderror"
+                    placeholder="01 00 00 00 00"
+                    autocomplete="tel"
+                />
+            </div>
+            @error('email')
+            <span class="tm-login-error-msg">L'adresse mail est invalide</span>
+            @enderror
+
+            <div class="tm-login-field">
                 <label for="password" class="tm-login-label">Mot de passe</label>
                 <input
                     name="password"
@@ -95,6 +110,8 @@
             <button type="submit" class="btn btn-primary tm-login-btn">
                 Créer un compte
             </button>
+
+            <div class="mt-8 tm-div-back-to-register">J'ai déjà un compte. <a href="/login" class="tm-text-primary tm-link-to-register">Me connecter</a></div>
 
         </form>
     </div>

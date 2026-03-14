@@ -21,6 +21,27 @@
                 <li class="nav-item">
                     <a class="nav-link nav-link-4 @if(request()->routeIs("contact")) active @endif" href="/contact">Contact</a>
                 </li>
+                <li class="nav-item">
+                    @auth
+                    <div class="dropdown">
+                            <button class="nav-link nav-link-5" data-bs-toggle="dropdown">{{ auth()->user()->surname }}</button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item text-primary tm-dropdown-item" href="/my-profile">Mon profil</a>
+                                <a class="dropdown-item text-primary tm-dropdown-item" href="/my-borrowings">Mes emprunts</a>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item text-primary tm-dropdown-item">
+                                        Se déconnecter
+                                    </button>
+                                </form>
+                            </div>
+
+                    </div>
+                    @endauth
+                    @guest
+                        <a href="/login" class="nav-link nav-link-5">Se connecter</a>
+                    @endguest
+                </li>
             </ul>
         </div>
     </div>

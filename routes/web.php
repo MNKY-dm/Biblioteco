@@ -26,6 +26,7 @@ Route::get('/detail-{id}', [BookDetailController::class, 'show'])->name('book-de
 
 Route::get('/borrow-{id}', [BorrowController::class, 'borrow'])->name('borrow')->middleware('auth');
 
+Route::get('/my-profile', [MyProfileController::class, 'show'])->name('my-profile')->middleware('auth');
 
 Route::get('/about', function () {
     return view('about');

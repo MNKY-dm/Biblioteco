@@ -57,6 +57,9 @@
         @error('email')
         <span class="tm-login-error-msg">{{ $message }}</span>
         @enderror
+
+        <div class="mt-8 tm-div-back-to-register">Je n'ai pas de compte. <a href="/register" class="tm-text-primary tm-link-to-register">Créer un compte</a></div>
+
     </div>
 </div>
 
