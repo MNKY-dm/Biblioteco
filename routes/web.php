@@ -6,6 +6,7 @@ use App\Http\Controllers\BookDetailController;
 use App\Http\Controllers\BorrowController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MyProfileController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -27,6 +28,7 @@ Route::get('/detail-{id}', [BookDetailController::class, 'show'])->name('book-de
 Route::get('/borrow-{id}', [BorrowController::class, 'borrow'])->name('borrow')->middleware('auth');
 
 Route::get('/my-profile', [MyProfileController::class, 'show'])->name('my-profile')->middleware('auth');
+Route::post('/my-profile', [MyProfileController::class, 'store'])->name('update-profile')->middleware('auth');
 
 Route::get('/about', function () {
     return view('about');

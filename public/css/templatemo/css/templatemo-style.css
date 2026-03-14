@@ -788,7 +788,7 @@ figure.effect-ming img {
 .tm-login-btn {
     width: 100%;
     margin-top: 10px;
-    padding: 12px;
+    padding: 16px;
     font-size: 1.05rem;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
@@ -799,6 +799,35 @@ figure.effect-ming img {
     color: #fff;
     cursor: pointer;
     transition: background-color 0.3s ease;
+}
+.tm-login-btn:hover {
+    background-color: #fff !important;
+    padding: 12px 8px !important;
+    border: 4px solid #009999;
+    color: #009999;
+}
+
+.tm-chg-psw-btn {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 12px 8px;
+    font-size: 1.05rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    border-radius: 5px;
+    background-color: #fff;
+    border: 4px solid #009999;
+    color: #009999;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.tm-chg-psw-btn:hover {
+    background-color: #009999;
+    padding: 16px 8px !important;
+    border: transparent;
+    color: #fff;
+
 }
 
 .tm-login-btn:hover {

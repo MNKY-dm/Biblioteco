@@ -78,7 +78,7 @@
                     autocomplete="tel"
                 />
             </div>
-            @error('email')
+            @error('tel')
             <span class="tm-login-error-msg">L'adresse mail est invalide</span>
             @enderror
 
