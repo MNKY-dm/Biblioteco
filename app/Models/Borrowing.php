@@ -9,7 +9,7 @@ class Borrowing extends Model
 {
     public function books(): BelongsToMany
     {
-        return $this->belongsToMany(Book::class, 'borrowing_book', 'borrowing_id', 'book_id');
+        return $this->belongsToMany(Book::class, 'borrowing_book', 'borrowing_id', 'id_book');
     }
 
     protected $fillable = [

@@ -29,4 +29,10 @@ class BorrowController extends Controller
             }
         }
     }
+
+    public function showMyBorrowings() {
+        $user = Auth::user();
+        $borrowings = $user->borrowings()->with('books')->get();
+        return view('my-borrowings', compact('borrowings'));
+    }
 }

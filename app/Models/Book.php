@@ -18,7 +18,7 @@ class Book extends Model
     }
 
     public function borrowings() : BelongsToMany {
-        return $this->belongsToMany(Borrowing::class, 'borrowing_book', 'id_book');
+        return $this->belongsToMany(Borrowing::class, 'borrowing_book', 'borrowing_id', 'id_book');
     }
 
     protected $fillable = [

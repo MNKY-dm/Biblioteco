@@ -30,6 +30,8 @@ Route::get('/borrow-{id}', [BorrowController::class, 'borrow'])->name('borrow')-
 Route::get('/my-profile', [MyProfileController::class, 'show'])->name('my-profile')->middleware('auth');
 Route::post('/my-profile', [MyProfileController::class, 'store'])->name('update-profile')->middleware('auth');
 
+Route::get('/my-borrowings', [BorrowController::class, 'showMyBorrowings'])->name('my-borrowings')->middleware('auth');
+
 Route::get('/about', function () {
     return view('about');
 })->name('about');
