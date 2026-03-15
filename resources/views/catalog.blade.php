@@ -12,7 +12,7 @@
         @include('component.search-bar')
     </div>
 
-    @if($q)
+    @if($q !== '')
         @include("search.search")
     @else
         <div class="container-fluid tm-container-content tm-mt-60">

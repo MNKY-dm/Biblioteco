@@ -10,16 +10,14 @@ class SearchController extends Controller
     public function search(Request $request)
     {
         $q = $request->input('q', '');
-        $books = collect(); // collection vide par défaut
 
-        if (strlen($q) >= 3) {
-            $books = Book::whereFullText(['name', 'summary', 'author'], $q . '*', ['mode' => 'boolean'])->get();
-        }
+        $books = strlen($q) >= 3
+            ? Book::whereFullText(['name', 'summary', 'author'], $q . '*', ['mode' => 'boolean'])
+                ->orWhereHas('categories', fn($q2) => $q2->where('name', 'like', '%'.$q.'%'))
+                ->orWhereHas('tags', fn($q2) => $q2->where('name', 'like', '%'.$q.'%'))
+                ->get()
+            : collect();
 
-        if ($request->ajax()) {
-            return view('search.search-partial', ['books' => $books, 'q' => $q]);
-        }
-
-        return view('search.search', ['books' => $books, 'q' => $q]);
+        return view('search.search-partial', compact('books', 'q'));
     }
 }
