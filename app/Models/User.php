@@ -32,6 +32,10 @@ class User extends Authenticatable
         return $this->hasMany(Borrowing::class, 'client_id');
     }
 
+    public function carts() : HasMany {
+        return $this->hasMany(Cart::class, 'client_id');
+    }
+
     protected $fillable = [
         'surname',
         'name',
