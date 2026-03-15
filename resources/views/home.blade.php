@@ -5,12 +5,16 @@
 @section('content')
 
     <div class="tm-hero d-flex justify-content-center align-items-center" data-parallax="scroll" data-image-src="{{ asset("css/templatemo/img/hero.jpg") }}">
-        <form class="d-flex tm-search-form">
-            <input class="form-control tm-search-input" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success tm-search-btn" type="submit">
-                <i class="fas fa-search"></i>
-            </button>
-        </form>
+        <div class="tm-search-wrapper">
+            <form class="d-flex tm-search-form">
+                <input class="form-control tm-search-input" type="search"
+                       placeholder="Search" aria-label="Search" id="search-bar">
+                <button class="btn btn-outline-success tm-search-btn" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+            <div id="search-results"></div>
+        </div>
     </div>
 
     <div class="container-fluid tm-container-content tm-mt-60">
@@ -34,5 +38,6 @@
                 </div>
             @endforeach
             <!-- row -->
+        </div>
     </div> <!-- container-fluid, tm-container-content -->
 @endsection

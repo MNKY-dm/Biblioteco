@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('status', 20);
             $table->timestamp('published_at');
             $table->timestamps();
+
+            $table->fullText(['name', 'summary', 'author']);
         });
     }
 
