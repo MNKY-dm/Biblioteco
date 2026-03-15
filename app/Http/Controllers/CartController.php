@@ -41,4 +41,19 @@ class CartController extends Controller
             return view("message.error",  ['message' =>"Le livre est indisponible."]);
         }
     }
+
+    public function deleteBook(Book $book) {
+        $user = auth()->user();
+        $cart = $user->carts()->where('status', 'PENDING')->first();
+        if ($cart !== null) {
+            if ($cart->books()->where('book_id', $book->id)->exists()) {
+                $cart->books()->detach($book->id);
+                return view('message.book-deleted', ['book' => $book]);
+            } else {
+                return view('message.error', ['message' => "Le livre n'est pas dans votre panier."]);
+            }
+        } else {
+            return view('message.error', ['message' => "Vous n'avez pas de panier en attente."]);
+        }
+    }
 }
