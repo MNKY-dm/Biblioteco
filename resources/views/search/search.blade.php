@@ -2,6 +2,9 @@
     <div class="row mb-4">
         <h2 class="col-6 tm-text-primary">Recherche pour : "{{ $q }}"</h2>
     </div>
+    <div class="row">
+        {{ $books->links() }}
+    </div>
     <div class="row tm-mb-90 tm-gallery">
         @foreach($books as $book)
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
@@ -18,5 +21,8 @@
                 </div>
             </div>
         @endforeach
+        <div class="row">
+            {{ $books->links() }}
+        </div>
     </div>
 </div>

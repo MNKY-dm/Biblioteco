@@ -13,13 +13,13 @@ class SearchController extends Controller
         $books = collect(); // collection vide par défaut
 
         if (strlen($q) >= 3) {
-            $books = Book::whereFullText(['name', 'summary', 'author'], $q)->get();
+            $books = Book::whereFullText(['name', 'summary', 'author'], $q . '*', ['mode' => 'boolean'])->get();
         }
 
         if ($request->ajax()) {
-            return view('catalog.search-partial', ['books' => $books, 'q' => $q]);
+            return view('search.search-partial', ['books' => $books, 'q' => $q]);
         }
 
-        return view('catalog.search', ['books' => $books, 'q' => $q]);
+        return view('search.search', ['books' => $books, 'q' => $q]);
     }
 }

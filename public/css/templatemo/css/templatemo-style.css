@@ -472,10 +472,16 @@ figure.effect-ming:hover img { opacity: 0.4; }
 /* Videos */
 #tm-video-container {
     max-height: 400px;
-    overflow: hidden;
     background-color: #333;
     margin-bottom: 90px;
     position: relative;
+}
+
+#tm-video-clip {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;    /* clipping uniquement sur la vidéo */
+    z-index: 0;
 }
 
 #tm-video {
@@ -889,12 +895,7 @@ figure.effect-ming img {
 #search-results.tm-search-open {
     display: block;
     animation: show 0.2s ease;
-}
-
-
-#search-results.tm-search-open {
-    display: block;
-    animation: show 0.2s ease;
+    z-index: 9999;
 }
 
 /* Item résultat */

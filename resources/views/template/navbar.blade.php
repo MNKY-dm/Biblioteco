@@ -13,7 +13,7 @@
                     <a class="nav-link nav-link-1 @if(request()->routeIs("home") || request()->routeIs("home")) active @endif " aria-current="page" href="/home">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-2 @if(request()->routeIs("catalog") || request()->routeIs("catalog")) active @endif" href="/catalog">Catalogue de livres</a>
+                    <a class="nav-link nav-link-2 @if(request()->routeIs("search") || request()->routeIs("search")) active @endif" href="/catalog">Catalogue de livres</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link nav-link-3 @if(request()->routeIs("about")) active @endif" href="/about">About</a>
