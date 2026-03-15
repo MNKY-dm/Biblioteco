@@ -7,6 +7,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Cart extends Model {
+
+    // Status : PENDING, CONFIRMED, EXPIRED
+    protected $fillable = [
+        'client_id',
+        'book_id',
+        'status',
+        'expires_at',
+    ];
+
     protected function user(): BelongsTo {
         return $this->belongsTo(User::class, "client_id");
     }

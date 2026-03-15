@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Borrowing extends Model
 {
+    // Status : ACTIVE, RETURNED, LATE
     public function books(): BelongsToMany
     {
         return $this->belongsToMany(Book::class, 'borrowing_book', 'borrowing_id', 'id_book');

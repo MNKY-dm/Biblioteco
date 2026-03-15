@@ -23,11 +23,11 @@
                         <p class="h-2 text-primary">{{ $category->name }}</p>
                     @endforeach
                     <div class="text-center mb-5">
-                        <a href="/borrow-{{ $book->id }}" class="btn btn-primary tm-btn-big @if($book->status !== "DISPONIBLE") disabled @endif">Emprunter</a>
+                        <a href="/borrow-{{ $book->id }}" class="btn btn-primary tm-btn-big @if($book->status !== "AVAILABLE") disabled @endif">Emprunter</a>
                     </div>
                     <div class="mb-4 d-flex flex-wrap">
                         <div class="mr-4 mb-2">
-                            <span class="tm-text-gray-dark">Disponibilité : </span><span class="tm-text-primary"> @if($book->status === "DISPONIBLE") Disponible à l'emprunt @else Déjà emprunté @endif</span>
+                            <span class="tm-text-gray-dark">Disponibilité : </span><span class="tm-text-primary"> @if($book->status === "AVAILABLE") Disponible à l'emprunt @else Déjà emprunté @endif</span>
                         </div>
                         @if($book->status === "EMPRUNTE")
                             <div class="mr-4 mb-2">

@@ -13,15 +13,15 @@ class BorrowController extends Controller
         $book = Book::findOrFail($id);
 
         if (Auth::user()->canBorrow()) {
-            if ($book->status === 'DISPONIBLE') {
+            if ($book->status === 'AVAILABLE') {
                 $borrowing = Borrowing::create([
                     'client_id' => auth()->user()->id,
                     'start_date' => now(),
                     'deadline' => now()->addDays(14),
-                    'status' => 'EN COURS',
+                    'status' => 'ACTIVE',
                 ]);
 
-                $book->status = 'EMPRUNTE';
+                $book->status = 'BORROWED';
                 $book->borrowings()->attach($borrowing->id);
                 $book->save();
 

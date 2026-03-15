@@ -21,7 +21,7 @@ class User extends Authenticatable
      */
 
     public function canBorrow() : bool {
-        return $this->borrowings->count() <= 6;
+        return $this->borrowings()->where('status', 'ACTIVE')->count() <= 6;
     }
 
     public function role() : BelongsTo {

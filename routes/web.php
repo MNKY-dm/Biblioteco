@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BookDetailController;
 use App\Http\Controllers\BorrowController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MyProfileController;
@@ -34,6 +35,13 @@ Route::get('/my-profile', [MyProfileController::class, 'show'])->name('my-profil
 Route::post('/my-profile', [MyProfileController::class, 'store'])->name('update-profile')->middleware('auth');
 
 Route::get('/my-borrowings', [BorrowController::class, 'showMyBorrowings'])->name('my-borrowings')->middleware('auth');
+
+Route::prefix('/cart')->name('cart.')->middleware('auth')->group(function () {
+    Route::get('/', [CartController::class, 'show'])->name('index');
+    Route::post('/add/{book}', [CartController::class, 'addBook'])->name('add-book');
+    Route::delete('/delete/{book}', [CartController::class, 'deleteBook'])->name('delete-book');
+    Route::post('/confirm', [CartController::class, 'confirm'])->name('confirm');
+});
 
 Route::get('/about', function () {
     return view('about');
