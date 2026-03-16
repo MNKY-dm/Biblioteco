@@ -56,4 +56,24 @@ class CartController extends Controller
             return view('message.error', ['message' => "Vous n'avez pas de panier en attente."]);
         }
     }
+
+    public function confirm() {
+        $user = auth()->user();
+        $cart = $user->carts()->where('status', 'PENDING')->first();
+        if ($cart !== null) {
+            if ($cart->books()->count() < 6) {
+                if ($cart->books()->count() > 0 ) {
+                    if ($cart->books()->where('status', !"AVAILABLE")->exists()) {
+
+                    }
+                } else {
+                    $message = "Votre panier est vide.";
+                }
+            } else {
+                $message = "Votre panier est plein.";
+            }
+        } else {
+            return view('message.error', ['message' => "Vous n'avez pas de panier en cours."]);
+        }
+    }
 }

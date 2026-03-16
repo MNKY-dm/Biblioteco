@@ -45,7 +45,7 @@ class BookFactory extends Factory
             'author' => fake('fr_FR')->name(),
             'image_path' => 'books/' . $validFiles[rand(0, count($validFiles) - 1)],
             'language' => 'FR',
-            'status' => "DISPONIBLE",
+            'status' => "AVAILABLE",
             'published_at' => now(),
         ];
     }

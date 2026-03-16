@@ -10,7 +10,11 @@ class Borrowing extends Model
     // Status : ACTIVE, RETURNED, LATE
     public function books(): BelongsToMany
     {
-        return $this->belongsToMany(Book::class, 'borrowing_book', 'borrowing_id', 'id_book');
+        return $this->belongsToMany(Book::class, 'borrowing_book', 'id_book', 'borrowing_id');
+    }
+
+    public static function createFromCart(Cart $cart): Borrowing {
+
     }
 
     protected $fillable = [

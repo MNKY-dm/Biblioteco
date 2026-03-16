@@ -19,7 +19,7 @@
     @endforeach
 
     @if($books->count() > 7)
-        <a href="/search?q={{ urlencode($q) }}" class="tm-search-see-all">
+        <a href="/catalog?q={{ urlencode($q) }}" class="tm-search-see-all">
             Voir tous les résultats ({{ $books->count() }})
             <i class="fas fa-arrow-right"></i>
         </a>
