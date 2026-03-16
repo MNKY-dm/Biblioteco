@@ -27,6 +27,7 @@
                             <button class="nav-link nav-link-5" data-bs-toggle="dropdown">{{ auth()->user()->surname }}</button>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item text-primary tm-dropdown-item" href="/my-profile">Mon profil</a>
+                                <a class="dropdown-item text-primary tm-dropdown-item" href="/cart">Mon panier</a>
                                 <a class="dropdown-item text-primary tm-dropdown-item" href="/my-borrowings">Mes emprunts</a>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf

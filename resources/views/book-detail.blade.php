@@ -23,7 +23,10 @@
                         <p class="h-2 text-primary">{{ $category->name }}</p>
                     @endforeach
                     <div class="text-center mb-5">
-                        <a href="/borrow-{{ $book->id }}" class="btn btn-primary tm-btn-big @if($book->status !== "AVAILABLE") disabled @endif">Emprunter</a>
+                        <form action="{{ route('cart.add-book', $book) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-primary tm-btn-big @if($book->status !== "AVAILABLE") disabled @endif">Emprunter</button>
+                        </form>
                     </div>
                     <div class="mb-4 d-flex flex-wrap">
                         <div class="mr-4 mb-2">

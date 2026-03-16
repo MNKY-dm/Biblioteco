@@ -16,11 +16,11 @@ class Cart extends Model {
         'expires_at',
     ];
 
-    protected function user(): BelongsTo {
+    public function user(): BelongsTo {
         return $this->belongsTo(User::class, "client_id");
     }
 
-    protected function books(): BelongsToMany {
-        return $this->belongsToMany(Book::class);
+    public function books(): BelongsToMany {
+        return $this->belongsToMany(Book::class, 'cart_book', 'book_id', 'cart_id');
     }
 }

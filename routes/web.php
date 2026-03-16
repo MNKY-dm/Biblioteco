@@ -21,6 +21,7 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 
 Route::get('/home', [HomeController::class, 'show'])->name('home');
+Route::get('/', [HomeController::class, 'show'])->name('home');
 
 Route::get('/catalog', [CatalogController::class, "show"])->name('catalog');
 

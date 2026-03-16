@@ -3,13 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Borrowing;
 use App\Models\Cart;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
     public function show() {
-        return view('my-cart');
+        $user = auth()->user();
+        $carts = $user->carts();
+        $cart = $carts->where('status', 'PENDING')->first();
+
+        return view('my-cart', ['cart' => $cart]);
     }
 
     public function addBook(Book $book) {
@@ -59,21 +64,55 @@ class CartController extends Controller
 
     public function confirm() {
         $user = auth()->user();
+
+        // Récupérer le panier "EN ATTENTE", si l'user en a un
         $cart = $user->carts()->where('status', 'PENDING')->first();
         if ($cart !== null) {
-            if ($cart->books()->count() < 6) {
-                if ($cart->books()->count() > 0 ) {
-                    if ($cart->books()->where('status', !"AVAILABLE")->exists()) {
 
+            // Vérifier si le panier n'est pas plein
+            if ($cart->books()->count() <= 6) {
+
+                // Vérifier si le panier n'est pas vide
+                if ($cart->books()->count() > 0 ) {
+
+                    // Regarder l'état de chacun des livres
+                    foreach ($cart->books as $book) {
+
+                        // Si le livre n'est pas "DISPONIBLE"
+                        if ($book->status !== 'AVAILABLE') {
+
+                            // Retourne le message d'erreur précisant quel livre n'est plus disponible
+                            return view('message.error', ['message' => "Un livre n'est plus disponible.", 'book' => $book]);
+                        }
                     }
+
+                    // Si tous les livres sont "DISPONIBLE" :
+                    Borrowing::createFromCart($cart, $user->id);
+
+                    // Passer le panier en "CONFIRME"
+                    $cart->status = 'CONFIRMED';
+
+                    $cart->save();
+
+                    // Retourne le message de confirmation
+                    return view('message.cart-confirmed', ['book' => $cart]);
                 } else {
+
+                    // Si le panier est vide
                     $message = "Votre panier est vide.";
                 }
             } else {
+
+                // Si le panier est plein
                 $message = "Votre panier est plein.";
             }
         } else {
-            return view('message.error', ['message' => "Vous n'avez pas de panier en cours."]);
+
+            // Si aucun panier n'est "EN ATTENTE"
+            $message =  "Vous n'avez pas de panier en cours.";
         }
+
+        // Retourne le message d'erreur en fonction de l'erreur
+        return view('message.error', ['message' => $message]);
     }
 }

@@ -869,10 +869,6 @@ figure.effect-ming img {
    DROPDOWN RECHERCHE AJAX
    ============================================= */
 
-/* =============================================
-   DROPDOWN RECHERCHE AJAX
-   ============================================= */
-
 .tm-search-wrapper {
     position: absolute;   /* référence pour le dropdown */
     z-index: 100;

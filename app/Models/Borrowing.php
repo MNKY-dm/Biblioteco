@@ -13,8 +13,31 @@ class Borrowing extends Model
         return $this->belongsToMany(Book::class, 'borrowing_book', 'id_book', 'borrowing_id');
     }
 
-    public static function createFromCart(Cart $cart): Borrowing {
+    public static function createFromCart(Cart $cart, $userId): Borrowing {
 
+        // Créer un emprunt
+        $borrowing =  Borrowing::create([
+            'client_id' => $userId,
+            'start_date' => now(),
+            'deadline' => now()->addDays(14),
+            'status' => "ACTIVE",
+        ]);
+
+        // Pour chaque livre dans le panier
+        foreach ($cart->books as $book) {
+
+            // Passer le livre en "EMPRUNTE"
+            $book->status = "BORROWED";
+
+            $book->save();
+
+            // L'attacher à l'emprunt (relation n:m)
+            $borrowing->books()->attach($book);
+
+        }
+
+        // Renvoyer l'emprunt
+        return $borrowing;
     }
 
     protected $fillable = [
