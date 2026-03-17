@@ -25,7 +25,8 @@
                     <div class="text-center mb-5">
                         <form action="{{ route('cart.add-book', $book) }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-primary tm-btn-big @if($book->status !== "AVAILABLE") disabled @endif">Emprunter</button>
+                            <button type="submit"
+                                    class="btn btn-primary tm-btn-big @if($book->status !== "AVAILABLE" || ($cart && $cart->books()->where('id', $book->id)->exists()))" disabled @endif>@if($cart && $cart->books()->where('id', $book->id)->exists()) Déjà dans le panier @else Emprunter @endif</button>
                         </form>
                     </div>
                     <div class="mb-4 d-flex flex-wrap">

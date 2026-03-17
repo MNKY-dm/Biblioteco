@@ -25,9 +25,8 @@ class CartController extends Controller
                 $cart = $user->carts()->where('status', 'PENDING')->first();
                 if ($cart !== null) {
                     if ($cart->books()->count() < 6 ) {
-//                        dd($cart->id, \DB::select('SELECT * FROM carts WHERE id = ?', [$cart->id]));
                         $cart->books()->attach($book);
-                        return redirect()->route('book-detail', ['book' => $book])->with('success', 'Livre ajouté au panier avec succès !');
+                        return redirect()->route('book-detail', ['id' => $book->id])->with('success', 'Livre ajouté au panier avec succès !');
                     }
                     $message = "Vous avez déjà atteint le nombre de livres maximum autorisé.";
                 } else {
@@ -37,14 +36,14 @@ class CartController extends Controller
                         'expires_at' => now()->addHours(2)
                     ]);
                     $cart->books()->attach($book->id);
-                    return view('message.book-added', ['book' => $book]);
+                    return redirect()->route('book-detail', ['id' => $book->id])->with('success', 'Livre ajouté au panier avec succès !');
                 }
             } else {
                 $message = "Impossible d'ajouter un livre au panier : vous avez déjà un emprunt en cours.";
             }
-            return view('message.error', ['message' => $message]);
+            return redirect()->back()->with('error', $message);
         } else {
-            return view("message.error",  ['message' =>"Le livre est indisponible."]);
+            return redirect()->back()->with('error', 'Le livre est indisponible.');
         }
     }
 

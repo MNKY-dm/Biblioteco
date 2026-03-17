@@ -17,6 +17,7 @@
 </head>
 <body>
     @include("template.loader")
+    @include('message.flash')
     @include("template.header")
     @include("template.navbar")
     @yield("content")
