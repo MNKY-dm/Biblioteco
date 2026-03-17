@@ -33,5 +33,21 @@
             @endforeach
         </ul>
     @endif
+    <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
+        <div class="tm-bg-gray tm-video-details">
+            <h2 class="text-primary">État du panier</h2>
+            @if(!$cart || $cart->books->isEmpty())
+                <p class="h-2 tm-text-grey">Panier vide</p>
+            @else
+                <p class="h-2 tm-text-grey">Nombre de livres dans le panier : {{ $cart->books->count() }}/6</p>
+            @endif
+            <div class="text-center mb-5">
+                <form action="{{ route('cart.confirm') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-primary tm-btn-big" @if(!$cart || $cart->books->isEmpty()) disabled @endif>Confirmer</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
 @endsection

@@ -82,7 +82,7 @@ class CartController extends Controller
                         if ($book->status !== 'AVAILABLE') {
 
                             // Retourne le message d'erreur précisant quel livre n'est plus disponible
-                            return view('message.error', ['message' => "Un livre n'est plus disponible.", 'book' => $book]);
+                            return redirect()->route('cart.index')->with('error', 'Un livre est indisponible.');
                         }
                     }
 
@@ -95,7 +95,7 @@ class CartController extends Controller
                     $cart->save();
 
                     // Retourne le message de confirmation
-                    return view('message.cart-confirmed', ['book' => $cart]);
+                    return redirect()->route('cart.index')->with('success', 'Votre panier a été confirmé !');
                 } else {
 
                     // Si le panier est vide
@@ -113,6 +113,6 @@ class CartController extends Controller
         }
 
         // Retourne le message d'erreur en fonction de l'erreur
-        return view('message.error', ['message' => $message]);
+        return redirect()->route('cart.index')->with('error', $message);
     }
 }
