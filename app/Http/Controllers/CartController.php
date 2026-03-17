@@ -53,9 +53,9 @@ class CartController extends Controller
         if ($cart !== null) {
             if ($cart->books()->where('book_id', $book->id)->exists()) {
                 $cart->books()->detach($book->id);
-                return view('message.book-deleted', ['book' => $book]);
+                return redirect()->route('cart.index')->with('success', 'Le livre a bien été retiré du panier !');
             } else {
-                return view('message.error', ['message' => "Le livre n'est pas dans votre panier."]);
+                return redirect()->route('cart.index')->with('error', 'Le livre n\'existe pas !');
             }
         } else {
             return view('message.error', ['message' => "Vous n'avez pas de panier en attente."]);

@@ -240,7 +240,7 @@ a.tm-text-primary:hover { color:#666666; }
 }
 
 .nav-link-5 {
-    border-radius: 1px ;
+    border-radius: 5px ;
     background-color: #009999;
     color: #fff;
     border: transparent;
@@ -986,6 +986,116 @@ figure.effect-ming img {
         width: calc(100% - 30px);
         top: calc(50% + 30px);
     }
+}
+
+/* =============================================
+   PAGE PANIER
+   ============================================= */
+
+.tm-cart-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-width: 750px;
+}
+
+.tm-cart-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 20px;
+    background: #ffffff;
+    border-left: 4px solid transparent;
+    border-bottom: 1px solid #eeeeee;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.tm-cart-item:first-child {
+    border-top: 1px solid #eeeeee;
+}
+
+.tm-cart-item:hover {
+    border-left-color: #009999;
+    background-color: #fafafa;
+}
+
+/* Miniature couverture */
+.tm-cart-item-img {
+    width: 52px;
+    height: 70px;
+    object-fit: cover;
+    object-position: center top;
+    flex-shrink: 0;
+    display: block;
+}
+
+/* Infos livre */
+.tm-cart-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    min-width: 0; /* évite le débordement du texte */
+}
+
+.tm-cart-item-title {
+    color: #333333;
+    font-size: 1rem;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tm-cart-item-author {
+    color: #999999;
+    font-size: 0.85rem;
+}
+
+/* Bouton supprimer */
+.tm-cart-item-delete {
+    flex-shrink: 0;
+    margin: 0;
+}
+
+.tm-cart-delete-btn {
+    background: none;
+    border: none;
+    color: #cccccc;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 4px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.tm-cart-delete-btn:hover {
+    color: #e74c3c;
+    background-color: #fdf0ef;
+}
+
+/* État panier vide */
+.tm-cart-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    color: #cccccc;
+    text-align: center;
+}
+
+.tm-cart-empty i {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: #dddddd;
+}
+
+.tm-cart-empty h2 {
+    color: #999999;
+    font-weight: 300;
+    font-size: 1.5rem;
+    margin-bottom: 0;
 }
 
 
