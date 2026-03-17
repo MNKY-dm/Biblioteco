@@ -21,6 +21,6 @@ class Cart extends Model {
     }
 
     public function books(): BelongsToMany {
-        return $this->belongsToMany(Book::class, 'cart_book', 'book_id', 'cart_id');
+        return $this->belongsToMany(Book::class, 'cart_book', 'cart_id', 'book_id');
     }
 }

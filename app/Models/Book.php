@@ -21,6 +21,10 @@ class Book extends Model
         return $this->belongsToMany(Borrowing::class, 'borrowing_book', 'borrowing_id', 'id_book');
     }
 
+    public function carts(): BelongsToMany {
+        return $this->belongsToMany(Cart::class, 'cart_book', 'book_id', 'cart_id');
+    }
+
     protected $fillable = [
         'status',
         'image_path',

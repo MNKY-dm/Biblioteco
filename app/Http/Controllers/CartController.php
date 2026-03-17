@@ -25,8 +25,9 @@ class CartController extends Controller
                 $cart = $user->carts()->where('status', 'PENDING')->first();
                 if ($cart !== null) {
                     if ($cart->books()->count() < 6 ) {
-                        $cart->books()->attach($book->id);
-                        return view('message.book-added', ['book' => $book]);
+//                        dd($cart->id, \DB::select('SELECT * FROM carts WHERE id = ?', [$cart->id]));
+                        $cart->books()->attach($book);
+                        return redirect()->route('book-detail', ['book' => $book])->with('success', 'Livre ajouté au panier avec succès !');
                     }
                     $message = "Vous avez déjà atteint le nombre de livres maximum autorisé.";
                 } else {
