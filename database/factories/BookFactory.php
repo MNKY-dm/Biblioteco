@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Faker\Factory as FakerFactory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Book>
@@ -16,6 +17,8 @@ class BookFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = FakerFactory::create('fr_FR');
+
         $dir = "/var/www/Biblioteco/storage/app/public/books";
         $extensionsAutorisees = ['jpg', 'jpeg', 'png', 'webp'];
 
@@ -39,7 +42,7 @@ class BookFactory extends Factory
 
 
         return [
-            'code' => 'BOOK' . str_pad($this->faker->unique()->randomNumber(5), 6, "0", STR_PAD_LEFT),
+            'code' => 'BOOK' . str_pad($faker->unique()->randomNumber(5), 6, "0", STR_PAD_LEFT),
             'name' => trim($this->faker->sentence(rand(1, 3)), "."),
             'summary' => $this->faker->text(500),
             'author' => $this->faker->name(),
