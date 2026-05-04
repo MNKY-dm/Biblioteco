@@ -16,7 +16,7 @@ class BookFactory extends Factory
      */
     public function definition(): array
     {
-        $dir = storage_path("app/public/books");
+        $dir = "/var/www/Biblioteco/storage/app/public/books";
         $extensionsAutorisees = ['jpg', 'jpeg', 'png', 'webp'];
 
         $files = scandir($dir);
