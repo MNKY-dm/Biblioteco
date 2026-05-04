@@ -39,10 +39,10 @@ class BookFactory extends Factory
 
 
         return [
-            'code' => 'BOOK' .  str_pad(fake()->unique()->randomNumber(5),  6, "0", STR_PAD_LEFT),
-            'name' => trim(fake()->sentence(rand(1, 3)), "."),
-            'summary' => fake('fr_FR')->text(500),
-            'author' => fake('fr_FR')->name(),
+            'code' => 'BOOK' . str_pad($this->faker->unique()->randomNumber(5), 6, "0", STR_PAD_LEFT),
+            'name' => trim($this->faker->sentence(rand(1, 3)), "."),
+            'summary' => $this->faker->text(500),
+            'author' => $this->faker->name(),
             'image_path' => 'books/' . $validFiles[rand(0, count($validFiles) - 1)],
             'language' => 'FR',
             'status' => "AVAILABLE",
