@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
         foreach ($books as $book) {
             $nbCategories = random_int(1, 3);
             $categoriesId = Category::all()->random($nbCategories)->pluck('id');
-            $book->categories()->attach($categoriesId);
+            $book->categories()->   attach($categoriesId);
 
             $nbTags = random_int(1, 5);
             $tagsId = Tag::all()->random($nbTags)->pluck('id');
