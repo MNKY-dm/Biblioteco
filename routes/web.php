@@ -27,7 +27,7 @@ Route::get('/catalog', [CatalogController::class, "show"])->name('catalog');
 
 Route::get("/search", [SearchController::class, 'search'])->name("search");
 
-Route::get('/detail-{id}', [BookDetailController::class, 'show'])->name('book-detail')->middleware("auth");
+Route::get('/detail-{id}', [BookDetailController::class, 'show'])->name('book-detail');
 
 
 Route::get('/borrow-{id}', [BorrowController::class, 'borrow'])->name('borrow')->middleware('auth');

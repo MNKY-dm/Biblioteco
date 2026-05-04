@@ -9,7 +9,12 @@ class BookDetailController extends Controller
 {
     public function show($id) {
         $book = Book::findOrFail($id);
-        $cart = auth()->user()->carts()->where('status', 'PENDING')->first();
+
+        if (auth()->check()) {
+            $cart = auth()->user()->carts()->where('status', 'PENDING')->first();
+        } else {
+            $cart = null;
+        }
 
         $tagIds = $book->tags->pluck("id"); // Récupérer les id des tags du livre actuel
         $booksWithSameTags = Book::with("tags")
