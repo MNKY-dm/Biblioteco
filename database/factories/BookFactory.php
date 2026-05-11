@@ -19,7 +19,7 @@ class BookFactory extends Factory
     {
         $faker = FakerFactory::create('fr_FR');
 
-        $dir = "/storage/app/public/books";
+        $dir = "storage/app/public/books";
         $extensionsAutorisees = ['jpg', 'jpeg', 'png', 'webp'];
 
         $files = scandir($dir);
