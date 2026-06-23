@@ -22,3 +22,10 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+.vercel
+.env*.local
+docker-compose.yml
+.idea/
+_ide_helper.php
+_ide_helper_models.php
+.phpstorm.meta.php
