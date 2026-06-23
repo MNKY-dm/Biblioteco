@@ -23,7 +23,11 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-    Route::get('/borrow-{id}', [BorrowController::class, 'borrow'])->name('borrow');
+    Route::post('/borrow/{book}', [BorrowController::class, 'borrow'])
+        ->name('borrow');
+
+    Route::post('/my-borrowings/{borrowing}/return', [BorrowController::class, 'returnBorrowing'])
+        ->name('my-borrowings.return');
 
     Route::get('/my-profile', [MyProfileController::class, 'show'])->name('my-profile');
     Route::post('/my-profile', [MyProfileController::class, 'store'])->name('update-profile');
