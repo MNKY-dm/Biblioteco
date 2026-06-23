@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('borrowing_book', function (Blueprint $table) {
-            $table->foreignId('id_book')->references('id')->on('books');
+            $table->foreignId('id_book')->references('id')->on('borrowings');
             $table->foreignId('borrowing_id')->references('id')->on('books');
             $table->primary(['id_book', 'borrowing_id']);
             // $table->string('status', 50); colonne ajoutée ensuite pour la V2, pour un rendu des livres au compte-goutte
