@@ -6,31 +6,46 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
+    public function show()
+    {
+        return view('auth.login');
+    }
+
     public function authenticate(Request $request): RedirectResponse
     {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
+        $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials)) {
+        $key = Str::lower($request->input('email')) . '|' . $request->ip();
+
+        if (RateLimiter::tooManyAttempts($key, 5)) {
+            $seconds = RateLimiter::availableIn($key);
+
+            throw ValidationException::withMessages([
+                'email' => "Trop de tentatives. Réessaie dans {$seconds} secondes.",
+            ]);
+        }
+
+        if (Auth::attempt($request->only('email', 'password'))) {
+            RateLimiter::clear($key);
             $request->session()->regenerate();
 
             return redirect()->intended(route('home'));
         }
 
-        return back()->withErrors([
-            'email' => "L'adresse mail ou le mot de passe est incorrect.",
-        ])->onlyInput('email');
-    }
+        RateLimiter::increment($key);
 
-    public function show() {
-        return view('auth.login');
+        throw ValidationException::withMessages([
+            'email' => "L'adresse mail ou le mot de passe est incorrect.",
+        ]);
     }
 
     public function logout(Request $request): RedirectResponse
@@ -38,7 +53,6 @@ class LoginController extends Controller
         Auth::logout();
 
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
         return redirect('/home');
