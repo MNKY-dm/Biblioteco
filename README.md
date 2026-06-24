@@ -3,6 +3,27 @@
 Biblioteco est une application web de gestion de bibliothèque développée avec Laravel.  
 Elle permet la consultation d’un catalogue, la gestion des emprunts, la gestion du panier, ainsi qu’un accès différencié selon les rôles utilisateur, notamment pour les espaces staff et administrateur. 
 
+## Lien d'accès : http://77.42.122.72/home
+
+## Comptes de démonstration
+
+Compte administrateur :
+
+- Email : `admin@biblioteco.bts`
+- Mot de passe : `H3l1c0pt3re.`
+
+Compte staff :
+
+- Email : `staff@biblioteco.bts`
+- Mot de passe : `H3l1c0pt3re.`
+
+Compte utilisateur :
+
+- Email : `user@biblioteco.bts`
+- Mot de passe : `H3l1c0pt3re.`
+
+Ces comptes peuvent être adaptés selon les données présentes dans la base au moment du déploiement.
+
 ## Fonctionnalités
 
 - Consultation du catalogue de livres.
@@ -113,19 +134,6 @@ Lancer le build front :
 npm run build
 ```
 
-## Comptes de démonstration
-
-Compte administrateur :
-
-- Email : `admin@biblioteco.local`
-- Mot de passe : `P@ssw0rd.`
-
-Compte utilisateur :
-
-- Email : `user@biblioteco.local`
-- Mot de passe : `P@ssw0rd.`
-
-Ces comptes peuvent être adaptés selon les données présentes dans la base au moment du déploiement.
 
 ## Accès à l’application
 
