@@ -1,59 +1,143 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Biblioteco
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Biblioteco est une application web de gestion de bibliothèque développée avec Laravel.  
+Elle permet la consultation d’un catalogue, la gestion des emprunts, la gestion du panier, ainsi qu’un accès différencié selon les rôles utilisateur, notamment pour les espaces staff et administrateur. 
 
-## About Laravel
+## Fonctionnalités
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Consultation du catalogue de livres.
+- Recherche d’ouvrages.
+- Accès à une page de détail pour chaque livre.
+- Gestion d’un panier.
+- Confirmation d’emprunt.
+- Consultation des emprunts de l’utilisateur.
+- Retour d’un emprunt.
+- Gestion du profil utilisateur.
+- Espace staff pour la modification des livres.
+- Espace administrateur pour la gestion des utilisateurs. 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Stack technique
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- PHP 8.2+
+- Laravel 12
+- MySQL
+- Vite 7
+- Tailwind CSS 4
+- PHPUnit 11 
 
-## Learning Laravel
+## Dépendances principales
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+Le projet utilise notamment les dépendances suivantes :
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- `laravel/framework`
+- `laravel/tinker`
+- `laravel-lang/lang`
 
-## Laravel Sponsors
+En développement, le projet utilise aussi :
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- `phpunit/phpunit`
+- `laravel/pint`
+- `laravel/pail`
+- `laravel/sail`
+- `fakerphp/faker`
+- `mockery/mockery`
+- `barryvdh/laravel-ide-helper` 
 
-### Premium Partners
+## Installation
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+Cloner le dépôt :
 
-## Contributing
+```bash
+git clone https://github.com/MNKY-dm/Biblioteco.git
+cd Biblioteco
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Installer les dépendances PHP :
+```bash
+composer install
+```
 
-## Code of Conduct
+Installer les dépendances front :
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+npm install
+```
 
-## Security Vulnerabilities
+Créer le fichier d’environnement :
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+cp .env.example .env
+```
 
-## License
+Générer la clé de l’application :
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+php artisan key:generate
+```
+
+Configurer la base de données et la remplir dans le fichier .env, puis lancer les migrations et les seeders :
+
+```bash
+php artisan migrate --seed
+```
+
+Compiler les assets front :
+
+```bash
+npm run build
+```
+
+Lancer le serveur de développement :
+
+```bash
+php artisan serve
+``` 
+
+## Commandes utiles
+
+Lancer les tests :
+
+```bash
+php artisan test
+```
+
+Lancer le projet en mode développement avec les services prévus par le projet :
+
+```bash
+composer run dev
+```
+
+Lancer le build front :
+
+```bash
+npm run build
+```
+
+## Comptes de démonstration
+
+Compte administrateur :
+
+- Email : `admin@biblioteco.local`
+- Mot de passe : `P@ssw0rd.`
+
+Compte utilisateur :
+
+- Email : `user@biblioteco.local`
+- Mot de passe : `P@ssw0rd.`
+
+Ces comptes peuvent être adaptés selon les données présentes dans la base au moment du déploiement.
+
+## Accès à l’application
+
+Lien d’accès à l’application :  
+`À renseigner`
+
+## Configuration de production
+
+Pour un déploiement en production, il faut notamment vérifier que l’environnement est bien configuré et que le mode debug est désactivé, car Laravel recommande de ne pas exposer les informations de débogage en production. 
+
+Exemple :
+
+```env
+APP_ENV=production
+APP_DEBUG=false
