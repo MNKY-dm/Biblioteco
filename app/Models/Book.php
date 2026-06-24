@@ -25,7 +25,11 @@ class Book extends Model
         return $this->belongsToMany(Cart::class, 'cart_book', 'book_id', 'cart_id');
     }
 
+
     protected $fillable = [
+        'name',
+        'summary',
+        'author',
         'status',
         'image_path',
     ];

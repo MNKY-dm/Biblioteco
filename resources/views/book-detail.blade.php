@@ -40,11 +40,15 @@
                     </div>
                     <div class="mb-4 d-flex flex-wrap">
                         <div class="mr-4 mb-2">
-                            <span class="tm-text-gray-dark">Disponibilité : </span><span class="tm-text-primary"> @if($book->status === "AVAILABLE") Disponible à l'emprunt @else Déjà emprunté @endif</span>
+                            <span class="tm-text-gray-dark">Disponibilité : </span><span class="tm-text-primary"> @if($book->status === "AVAILABLE") Disponible à l'emprunt @else Indisponible @endif</span>
                         </div>
                         @if($book->status === "BORROWED")
                             <div class="mr-4 mb-2">
                                 <span class="tm-text-gray-dark">Retour : </span><span class="tm-text-primary">Retour prévu avant le {{ $book->borrowings()->first()?->deadline->addDays(1)->format('d/m/Y') }}</span>
+                            </div>
+                        @elseif($book->status === "INDISPOSED")
+                            <div class="mr-4 mb-2">
+                                <span class="tm-text-gray-dark">Retour : </span><span class="tm-text-primary">Aussi vite que possible</span>
                             </div>
                         @endif
                         <div class="mr-4 mb-2">

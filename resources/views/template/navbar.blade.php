@@ -15,12 +15,18 @@
                 <li class="nav-item">
                     <a class="nav-link nav-link-2 @if(request()->routeIs("catalog")) active @endif" href="/catalog">Catalogue de livres</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-link-3 @if(request()->routeIs("about")) active @endif" href="/about">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-link-4 @if(request()->routeIs("contact")) active @endif" href="/contact">Contact</a>
-                </li>
+                @can('access-staff-dashboard')
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-3 @if(request()->routeIs("staff.dashboard")) active @endif" href="{{ route('staff.dashboard') }}">Espace staff</a>
+                    </li>
+                @endcan
+
+                @can('access-admin-dashboard')
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-4 @if(request()->routeIs("admin.dashboard")) active @endif" href="{{ route('admin.dashboard') }}">Espace admin</a>
+                    </li>
+                @endcan
+
                 <li class="nav-item">
                     @auth
                     <div class="dropdown">

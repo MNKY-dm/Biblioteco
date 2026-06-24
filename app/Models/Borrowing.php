@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Borrowing extends Model
 {
@@ -11,6 +12,11 @@ class Borrowing extends Model
     public function books(): BelongsToMany
     {
         return $this->belongsToMany(Book::class, 'borrowing_book', 'id_book', 'borrowing_id');
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'client_id');
     }
 
     public static function createFromCart(Cart $cart, $userId): Borrowing {
